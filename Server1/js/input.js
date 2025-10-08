@@ -2,6 +2,7 @@ const INPUT = "input";
 const TEXT = "text";
 const FORM = "form";
 const SUBMIT = "submit";
+const LABEL = "label";
 
 /**
  * The TextInput class contains an HTML text input element and methods for accessing
@@ -12,9 +13,14 @@ class TextInput {
     /**
      * Createes a new HTML text input element.
      */
-    constructor(){
+    constructor(inputId, labelText){
         this.input = document.createElement(INPUT);
         this.input.type = TEXT;
+        this.input.name = inputId;
+        this.input.id = inputId;
+        this.label = document.createElement(LABEL);
+        this.label.innerHTML = labelText;
+        this.label.for = inputId;
     }
 
     /**
@@ -23,6 +29,10 @@ class TextInput {
      */
     getInput(){
         return this.input;
+    }
+
+    getLabel(){
+        return this.label;
     }
 
     /**
