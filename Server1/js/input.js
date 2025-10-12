@@ -13,7 +13,7 @@ class TextInput {
     /**
      * Createes a new HTML text input element.
      */
-    constructor(inputId, labelText){
+    constructor(inputId, labelText) {
         this.input = document.createElement(INPUT);
         this.input.type = TEXT;
         this.input.name = inputId;
@@ -27,28 +27,28 @@ class TextInput {
      * Returns the text HTML element
      * @returns the text HTML element
      */
-    getInput(){
+    getInput() {
         return this.input;
     }
 
-    getLabel(){
+    getLabel() {
         return this.label;
     }
 
-    /**
-     * Determines if the input is valid using the TextInputValidator static methods.
-     * @returns true if the input is valid, false otherwise
-     */
-    validate(){
-        return (TextInputValidator.isEmpty(this.input.value) && TextInputValidator.containsNumbers(this.input.value))
-    }
+    // /**
+    //  * Determines if the input is valid using the TextInputValidator static methods.
+    //  * @returns true if the input is valid, false otherwise
+    //  */
+    // validate() {
+    //     return (TextInputValidator.isEmpty(this.input.value) && TextInputValidator.containsNumbers(this.input.value))
+    // }
 }
 
 
 /**
  * The TextInputValidator class contains static methods to validate text input.
  */
-class TextInputValidator{
+class TextInputValidator {
 
     static NUMBERS = "0123456789";
 
@@ -57,10 +57,10 @@ class TextInputValidator{
      * @param {*} text 
      * @returns true if the text is empty or null, false otherwise
      */
-    static isEmpty(text){
-        if (text === null || text === ""){
+    static isEmpty(text) {
+        if (text === null || text === "") {
             return true;
-        } else{
+        } else {
             return false;
         }
     }
@@ -70,13 +70,15 @@ class TextInputValidator{
      * @param {*} text 
      * @returns true if the string contains numbers, false otherwise
      */
-    static containsNumbers(text){
+    static containsNumbers(text) {
         //
-        this.NUMBERS.array.forEach(num => {
-            if (text.includes(num)){
-                return true
+        let numFlag = false;
+        TextInputValidator.NUMBERS.split('').forEach(num => {
+            if (text.includes(num)) {
+                console.log("contains num");
+                numFlag = true;
             }
         });
-        return false;
+        return numFlag;
     }
 }
