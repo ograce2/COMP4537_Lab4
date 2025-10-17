@@ -32,7 +32,8 @@ class Store {
         document.body.appendChild(this.goToSearchBtn.getButton());
     }
 
-    static postURL = "https://comp-4537-lab-4-server.vercel.app/api/definitions/";
+    // static postURL = "https://comp-4537-lab-4-server.vercel.app/api/definitions/";
+    static postURL = "http://localhost:8080/api/definitions/";
 
     static sendDefinition() {
         const xhttp = new XMLHttpRequest();

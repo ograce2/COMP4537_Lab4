@@ -18,7 +18,8 @@ class Search {
         document.body.appendChild(this.goToStoreBtn.getButton());
     }
 
-    static getURL = "https://comp-4537-lab-4-server.vercel.app/api/definitions/?word=";
+    // static getURL = "https://comp-4537-lab-4-server.vercel.app/api/definitions/?word=";
+    static getURL = "http://localhost:8080/api/definitions/?word=";
 
     static searchDefinition() {
 
