@@ -32,11 +32,7 @@ class Dictionary {
         if (this.dictionary.hasOwnProperty(word)) {
             response["exists"] = true;
         } else {
-            console.log(this.dictionary);
-
             this.dictionary[word] = definition;
-
-            console.log(this.dictionary);
 
             this.count++;
             response["exists"] = false;

@@ -20,24 +20,23 @@ class Server {
                 let body = "";
                 req.on("data", function (chunk) {
                     if (chunk != null) {
-                        body += chunk;
+                        body += chunk.toString();
                     }
                 });
 
                 req.on("end", function () {
-                    let q = url.parse(body, true);
-                    let response = Server.dict.storeDefinition(q.query["word"], q.query["def"]);
+                    const parsed = Object.fromEntries(new URLSearchParams(body));
+                    let response = Server.dict.storeDefinition(parsed.word, parsed.def);
                     res.end(response);
                 });
-            } else if (req.method === GET) {
-                console.log("GET");
+            }
+            
+            if (req.method === GET) {
                 let q = url.parse(req.url, true);
 
                 const word = q.query["word"];
                 let definition = Server.dict.searchDefinition(word);
                 res.end(definition);
-            } else {
-                console.log("not post and not get :( ");
             }
         });
 

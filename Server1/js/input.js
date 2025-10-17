@@ -34,14 +34,6 @@ class TextInput {
     getLabel() {
         return this.label;
     }
-
-    // /**
-    //  * Determines if the input is valid using the TextInputValidator static methods.
-    //  * @returns true if the input is valid, false otherwise
-    //  */
-    // validate() {
-    //     return (TextInputValidator.isEmpty(this.input.value) && TextInputValidator.containsNumbers(this.input.value))
-    // }
 }
 
 
@@ -75,7 +67,6 @@ class TextInputValidator {
         let numFlag = false;
         TextInputValidator.NUMBERS.split('').forEach(num => {
             if (text.includes(num)) {
-                console.log("contains num");
                 numFlag = true;
             }
         });

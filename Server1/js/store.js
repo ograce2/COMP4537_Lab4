@@ -32,7 +32,7 @@ class Store {
         document.body.appendChild(this.goToSearchBtn.getButton());
     }
 
-    static postURL = "http://localhost:8080/api/definitions/";
+    static postURL = "https://comp-4537-lab-4-server.vercel.app/api/definitions/";
 
     static sendDefinition() {
         const xhttp = new XMLHttpRequest();
@@ -41,11 +41,10 @@ class Store {
 
         xhttp.open("POST", Store.postURL, true);
         xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhttp.send(`?word=${word}&def=${defintion}`);
+        xhttp.send(`word=${word}&def=${defintion}`);
 
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                console.log(this.responseText);
                 document.getElementById(DISPLAY_ID).innerHTML = Store.parseResponse(this.responseText);
             }
         }
